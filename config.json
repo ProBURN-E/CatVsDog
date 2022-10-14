@@ -1,5 +1,5 @@
 {
-    "name": "Cat_vs_Dog",
+    "name": "FaceEmotion",
     "n_gpu": 1,
 
     "arch": {

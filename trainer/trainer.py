@@ -64,7 +64,9 @@ class Trainer(BaseTrainer):
             debug_msg = 'Train Epoch: {} {} Loss: {:.6f}'.format(
                     epoch,
                     self._progress(batch_idx),
-                    loss.item())
+                    loss.item(),
+                    'lr: {}'.format(self.optimizer.param_groups[0]['lr'])
+                    )
             train_bar.set_description(debug_msg)
             if batch_idx % self.log_step == 0:
                 # self.logger.removeHandler(logging.StreamHandler()) # todo: why still print to console?

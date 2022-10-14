@@ -3,16 +3,16 @@
     "n_gpu": 1,
 
     "arch": {
-        "type": "ResNet18SelfModel",
+        "type": "Resnet18Model",
         "args": {
-            "num_classes": 2
+            "num_classes": 7
         }
     },
     "data_loader": {
-        "type": "CatVsDogDataLoader",
+        "type": "ImageFolderDataLoader",
         "args":{
-            "data_dir": "E:/github/pytorch深度学习实验内容/datasets/train",
-            "batch_size": 5,
+            "data_dir": "E:\\XunLei\\images",
+            "batch_size": 16,
             "shuffle": true,
             "validation_split": 0.2,
             "num_workers": 0
@@ -26,7 +26,8 @@
     },
     "loss": "cross_entropy_loss",
     "metrics": [
-        "accuracy"
+        "accuracy",
+        "top_k_acc"
     ],
     "lr_scheduler": {
         "type": "StepLR",

@@ -1,6 +1,8 @@
 import argparse
+
 import torch
 from tqdm import tqdm
+
 import data_loader.data_loaders as module_data
 import model.loss as module_loss
 import model.metric as module_metric
@@ -14,7 +16,7 @@ def main(config):
     # setup data_loader instances
     data_loader = getattr(module_data, config['data_loader']['type'])(
         config['data_loader']['args']['data_dir'],
-        batch_size=256,
+        batch_size=128,
         shuffle=False,
         validation_split=0.0,
         training=False,

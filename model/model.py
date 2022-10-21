@@ -1,7 +1,7 @@
 import torch.nn as nn
 import torch.nn.functional as F
 from base import BaseModel
-from torchvision.models import resnet18, resnet34, resnet50, resnet101, resnet152, vgg16
+from torchvision.models import resnet18, resnet34, resnet50, resnet101, resnet152, vgg16, mobilenet_v2
 
 # todo: How to calculate the number of parameters in the model? trainable and non-trainable
 class MnistModel(BaseModel):
@@ -217,3 +217,15 @@ class ResNet18SelfModel(nn.Module):
         out = out.reshape(x.shape[0], -1)
         out = self.fc(out)
         return out
+
+class MobileNetV2Model(BaseModel):
+    def __init__(self, num_classes=1000):
+        super().__init__()
+        self.num_classes = num_classes
+        self.mobilenet = mobilenet_v2(pretrained=True)
+        fc_features = self.mobilenet.classifier[1].in_features
+        self.mobilenet.classifier[1] = nn.Linear(fc_features, self.num_classes)
+
+    def forward(self, x):
+        x = self.mobilenet(x)
+        return x

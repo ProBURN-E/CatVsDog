@@ -3,7 +3,7 @@
     "n_gpu": 1,
 
     "arch": {
-        "type": "ResNet18SelfModel",
+        "type": "MobileNetV2Model",
         "args": {
             "num_classes": 2
         }

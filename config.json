@@ -12,7 +12,7 @@
         "type": "CatVsDogDataLoader",
         "args":{
             "data_dir": "E:/github/pytorch深度学习实验内容/datasets/train",
-            "batch_size": 5,
+            "batch_size": 16,
             "shuffle": true,
             "validation_split": 0.2,
             "num_workers": 0

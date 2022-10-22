@@ -19,6 +19,8 @@ torch.manual_seed(SEED)
 # torch.backends.cudnn.benchmark = True
 np.random.seed(SEED)
 
+# todo rearrange the logger, the current one is not so convenient
+
 def main(config):
     logger = config.get_logger('train')
 

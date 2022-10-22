@@ -45,11 +45,11 @@ def read_img(img_path):  # 读取中文路径图片
 
 
 def main():
-    st.title('猫狗分类')
+    st.title('黄超睿的猫狗分类Demo')
     with st.sidebar:
-        st.header('上传图片')
-        file_bytes = st.file_uploader('选择图片', type=['jpg', 'png', 'jpeg'])
-        test_path = st.text_input('测试集路径', value=r'E:\github\pytorch深度学习实验内容\datasets\test')
+        st.header('选择数据')
+        file_bytes = st.file_uploader('上传图片', type=['jpg', 'png', 'jpeg'])
+        test_path = st.text_input('输入测试集路径', value=r'E:\github\pytorch深度学习实验内容\datasets\test')
         img_names = os.listdir(test_path)
         # 按照数字顺序排序
         img_names.sort(key=lambda x: int(x.split('.')[0]))
@@ -59,16 +59,16 @@ def main():
         image = np.array(bytearray(file_bytes.read()), dtype=np.uint8)
         image = cv2.imdecode(image, cv2.IMREAD_COLOR)
         st.image(image, channels='BGR', width=300)
-        if st.button('预测'):
-            pred = predict(image)
-            st.write('预测结果：', cla_dict[pred.item()])
+        # if st.button('预测'):
+        pred = predict(image)
+        st.write('预测结果：', cla_dict[pred.item()])
     elif test_path:
         st.write(os.path.join(test_path, img_names[num - 1]))
         image = read_img(os.path.join(test_path, img_names[num - 1]))
         st.image(image, channels='BGR', width=300)
-        if st.button('预测'):
-            pred = predict(image)
-            st.write('预测结果：', cla_dict[pred.item()])
+        # if st.button('预测'):
+        pred = predict(image)
+        st.write('预测结果：', cla_dict[pred.item()])
 
 
 if __name__ == '__main__':

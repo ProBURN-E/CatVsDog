@@ -52,6 +52,7 @@ def read_img(img_path):  # 读取中文路径图片
 
 def main():
     st.title('黄超睿的猫狗分类Demo')
+    '请点击左上角展开侧边栏以加载数据'
     with st.sidebar:
         env = st.selectbox('选择环境', ['服务器运行','本地运行'])
         if env == '服务器运行':
@@ -74,6 +75,7 @@ def main():
             st.spinner('预测中...')
             pred = predict(image)
             st.write('预测结果：', cla_dict[pred.item()])
+            st.balloons()
     elif env == '本地运行':
         st.write(os.path.join(test_path, img_names[num - 1]))
         image = read_img(os.path.join(test_path, img_names[num - 1]))
@@ -82,6 +84,7 @@ def main():
             st.spinner('预测中...')
             pred = predict(image)
             st.write('预测结果：', cla_dict[pred.item()])
+            st.balloons()
     # st.balloons(size=30)
 
 if __name__ == '__main__':

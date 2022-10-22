@@ -76,5 +76,5 @@ print(cla_dict)
 #         st.write('预测结果：', cla_dict[pred.item()])
 
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()

@@ -77,14 +77,17 @@ def main():
             st.write('预测结果：', cla_dict[pred.item()])
             st.balloons()
     elif env == '本地运行':
-        st.write(os.path.join(test_path, img_names[num - 1]))
-        image = read_img(os.path.join(test_path, img_names[num - 1]))
-        st.image(image, channels='BGR', width=300)
-        if st.button('预测'):
-            st.spinner('预测中...')
-            pred = predict(image)
-            st.write('预测结果：', cla_dict[pred.item()])
-            st.balloons()
+        try:
+            st.write(os.path.join(test_path, img_names[num - 1]))
+            image = read_img(os.path.join(test_path, img_names[num - 1]))
+            st.image(image, channels='BGR', width=300)
+            if st.button('预测'):
+                st.spinner('预测中...')
+                pred = predict(image)
+                st.write('预测结果：', cla_dict[pred.item()])
+                st.balloons()
+        except:
+            st.error('公开链接，无法获取本地文件，请切换为服务器运行')
     # st.balloons(size=30)
 
 if __name__ == '__main__':

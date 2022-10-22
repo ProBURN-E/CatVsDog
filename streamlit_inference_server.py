@@ -12,6 +12,7 @@ print(os.getcwd())
 print(os.listdir('.'))
 cla_dict = {0: '猫', 1: '狗'}
 print(cla_dict)
+st.write(str(os.listdir('.')))
 # device = torch.device('cpu')
 # model = MobileNetV2Model(num_classes=2).to(device)
 # try:

@@ -1,8 +1,5 @@
 torch>=1.1
 torchvision
 numpy
-tqdm
 tensorboard>=1.14
-opencv-python
 opencv-python-headless
-opencv-contrib-python

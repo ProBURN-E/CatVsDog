@@ -4,6 +4,7 @@ import cv2
 import numpy as np
 import streamlit as st
 import torch
+import zipfile
 
 from model.model import MobileNetV2Model
 
@@ -15,7 +16,9 @@ model = MobileNetV2Model(num_classes=2).to(device)
 try:
     checkpoint = torch.hub.load_state_dict_from_url('https://public.ch.files.1drv.com/y4mapAGWfxALhSFloP0PDSg9HmM7PDe7SjiCZePZ6kYcCXW1rbMF50OUdFEXX_dUdTqdbBiaGOYWx_cgVK8jYzKkzX2fNurulS-LDJ2JlgH2nX0A7rW_p6WzlxKO5ThP9ewhH3z9ntU-FBmypiJEGyQK5hMR57q5XRgh2ogHmullFH5M129sVVmUXNm8qTo1SdGaaWjFYzMm1fCDssJReRDOATorTlTnnrPVI-6NTykWRo', map_location=device)
 except:
-    checkpoint = torch.load('.\weights\model_best.pth', map_location=device)
+    with zipfile.ZipFile('.\weights\model_best.pth', 'r') as z:
+        ckpt = z.extract('model_best.pth')
+    checkpoint = torch.load(ckpt, map_location=device)
 state_dict = checkpoint['state_dict']
 model.load_state_dict(state_dict)
 

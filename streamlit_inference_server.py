@@ -69,7 +69,8 @@ def main():
                 img_names.sort(key=lambda x: int(x.split('.')[0]))
                 # img_names = img
             except:
-                st.error('公开链接无法获取本地文件，请切换为服务器运行')
+                pass
+#                 st.error('公开链接无法获取本地文件，请切换为服务器运行')
 
     if file_bytes is not None:
         image = np.array(bytearray(file_bytes.read()), dtype=np.uint8)
@@ -91,8 +92,7 @@ def main():
                 st.write('预测结果：', cla_dict[pred.item()])
                 st.balloons()
         except:
-            pass
-#             st.error('公开链接无法获取本地文件，请切换为服务器运行')
+            st.error('公开链接无法获取本地文件，请切换为服务器运行')
     # st.balloons(size=30)
 
 if __name__ == '__main__':

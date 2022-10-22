@@ -9,6 +9,7 @@ import zipfile
 from model.model import MobileNetV2Model
 
 print(os.getcwd())
+print(os.listdir('.'))
 cla_dict = {0: '猫', 1: '狗'}
 print(cla_dict)
 device = torch.device('cpu')

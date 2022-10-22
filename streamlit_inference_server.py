@@ -7,25 +7,15 @@ import torch
 
 from model.model import MobileNetV2Model
 
+print(os.getcwd())
 cla_dict = {0: '猫', 1: '狗'}
-device = 'cpu'
-# 'E:\github\pytorch-template\MyNewProject\saved\models\Cat_vs_Dog\1022_003105\model_best.pth'
-ckpt_path = r'E:\github\pytorch-template\MyNewProject\saved\models\Cat_vs_Dog\1022_003105\model_best.pth'
-# device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-# print(device)
+device = torch.device('cpu')
 model = MobileNetV2Model(num_classes=2).to(device)
-try:
-    # raise FileNotFoundError
-    checkpoint = torch.load(ckpt_path)
-except FileNotFoundError:
-    print('未找到模型文件，下载在线模型')
-    checkpoint = torch.hub.load_state_dict_from_url('https://public.ch.files.1drv.com/y4mapAGWfxALhSFloP0PDSg9HmM7PDe7SjiCZePZ6kYcCXW1rbMF50OUdFEXX_dUdTqdbBiaGOYWx_cgVK8jYzKkzX2fNurulS-LDJ2JlgH2nX0A7rW_p6WzlxKO5ThP9ewhH3z9ntU-FBmypiJEGyQK5hMR57q5XRgh2ogHmullFH5M129sVVmUXNm8qTo1SdGaaWjFYzMm1fCDssJReRDOATorTlTnnrPVI-6NTykWRo')
+checkpoint = torch.hub.load_state_dict_from_url('https://public.ch.files.1drv.com/y4mapAGWfxALhSFloP0PDSg9HmM7PDe7SjiCZePZ6kYcCXW1rbMF50OUdFEXX_dUdTqdbBiaGOYWx_cgVK8jYzKkzX2fNurulS-LDJ2JlgH2nX0A7rW_p6WzlxKO5ThP9ewhH3z9ntU-FBmypiJEGyQK5hMR57q5XRgh2ogHmullFH5M129sVVmUXNm8qTo1SdGaaWjFYzMm1fCDssJReRDOATorTlTnnrPVI-6NTykWRo', map_location=device)
 state_dict = checkpoint['state_dict']
 model.load_state_dict(state_dict)
 
 # prepare model for testing
-# device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-model = model.to(device)
 model.eval()
 
 

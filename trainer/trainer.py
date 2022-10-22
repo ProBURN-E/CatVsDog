@@ -61,10 +61,12 @@ class Trainer(BaseTrainer):
             self.train_metrics.update('loss', loss.item())
             for met in self.metric_ftns:
                 self.train_metrics.update(met.__name__, met(output, target))
-            debug_msg = 'Train Epoch: {} {} Loss: {:.6f}'.format(
+            debug_msg = 'Train Epoch: {} {} Loss: {:.6f} lr: {}'.format(
                     epoch,
                     self._progress(batch_idx),
-                    loss.item())
+                    loss.item(),
+                    self.optimizer.param_groups[0]['lr']
+                    )
             train_bar.set_description(debug_msg)
             if batch_idx % self.log_step == 0:
                 # self.logger.removeHandler(logging.StreamHandler()) # todo: why still print to console?

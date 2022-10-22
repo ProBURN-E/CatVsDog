@@ -52,7 +52,7 @@ def read_img(img_path):  # 读取中文路径图片
 
 def main():
     st.title('黄超睿的猫狗分类Demo')
-    '请点击左上角展开侧边栏以加载数据'
+    '请点击页面左上角展开侧边栏以加载数据'
     with st.sidebar:
         env = st.selectbox('选择环境', ['服务器运行','本地运行'])
         if env == '服务器运行':

@@ -1,7 +1,7 @@
 '''
 CLI:
-python test.py -r 'E:\github\pytorch-template\MyNewProject\saved\models\Cat_vs_Dog\1022_012643\model_best.pth'
-
+# python test.py -r 'E:\github\pytorch-template\MyNewProject\saved\models\Cat_vs_Dog\1022_012643\model_best.pth'
+python test.py -r 'E:\github\pytorch-template\MyNewProject\saved\models\Cat_vs_Dog\1022_003105\model_best.pth'
 
 '''
 

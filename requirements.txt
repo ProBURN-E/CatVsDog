@@ -3,4 +3,4 @@ torchvision
 numpy
 tqdm
 tensorboard>=1.14
-opencv-python
+opencv_contrib_python==4.5.2.52

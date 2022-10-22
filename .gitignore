@@ -112,3 +112,5 @@ runs/
 .idea/
 __MACOSX/
 .history/
+
+coco_test.py

@@ -59,14 +59,18 @@ def main():
             st.header('选择数据')
             file_bytes = st.file_uploader('上传图片', type=['jpg', 'png', 'jpeg'])
         elif env == '本地运行':
-            st.header('选择数据')
-            file_bytes = st.file_uploader('上传图片', type=['jpg', 'png', 'jpeg'])
-            test_path = st.text_input('输入测试集路径', value=r'E:\github\pytorch深度学习实验内容\datasets\test')
-            img_names = os.listdir(test_path)
-            # 按照数字顺序排序
-            img_names.sort(key=lambda x: int(x.split('.')[0]))
-            # img_names = img
-            num = int(st.number_input('图片标号', min_value=1, max_value=len(img_names), step=1))
+            try:
+                st.header('选择数据')
+                file_bytes = st.file_uploader('上传图片', type=['jpg', 'png', 'jpeg'])
+                test_path = st.text_input('输入测试集路径', value=r'E:\github\pytorch深度学习实验内容\datasets\test')
+                num = int(st.number_input('图片标号', min_value=1, max_value=len(img_names), step=1))
+                img_names = os.listdir(test_path)
+                # 按照数字顺序排序
+                img_names.sort(key=lambda x: int(x.split('.')[0]))
+                # img_names = img
+            except:
+                st.error('公开链接，无法获取本地文件，请切换为服务器运行')
+
     if file_bytes is not None:
         image = np.array(bytearray(file_bytes.read()), dtype=np.uint8)
         image = cv2.imdecode(image, cv2.IMREAD_COLOR)

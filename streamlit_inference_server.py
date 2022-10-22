@@ -7,6 +7,7 @@ import torch
 
 from model.model import MobileNetV2Model
 
+print(os.getcwd())
 cla_dict = {0: '猫', 1: '狗'}
 device = torch.device('cpu')
 model = MobileNetV2Model(num_classes=2).to(device)

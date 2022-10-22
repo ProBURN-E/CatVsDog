@@ -52,7 +52,7 @@ def read_img(img_path):  # 读取中文路径图片
 
 def main():
     st.title('黄超睿的猫狗分类Demo')
-    st.number_input('图片标号', step=1)
+#     st.number_input('图片标号', step=1)
     '请点击页面左上角展开侧边栏以加载数据'
     with st.sidebar:
         env = st.selectbox('选择环境', ['服务器运行','本地运行'])
@@ -64,7 +64,7 @@ def main():
                 st.header('选择数据')
                 file_bytes = st.file_uploader('上传图片', type=['jpg', 'png', 'jpeg'])
                 test_path = st.text_input('输入测试集路径', value=r'E:\github\pytorch深度学习实验内容\datasets\test')
-                num = int(st.number_input('图片标号', min_value=1, max_value=len(img_names), step=1))
+                num = int(st.number_input('图片标号', min_value=1, max_value=12500, step=1))
                 img_names = os.listdir(test_path)
                 # 按照数字顺序排序
                 img_names.sort(key=lambda x: int(x.split('.')[0]))
